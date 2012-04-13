@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8" />
+        <link href="stylesheets/style.css" rel="stylesheet" type="text/css" />
+        <title>Byte of Python - Ελληνική Έκδοση</title>
+    </head>
+    
+    <body>
+        <header>
+            <div class="centered">
+                <h1><a href="index.html">Byte of Python - Ελληνική Έκδοση</a></h1>
+            </div>
+        </header>
+        
+        <div class="content">
+            <h1>Τελεστές και εκφράσεις</h1>
+<h2>Εισαγωγή</h2>
+<p>Οι περισσότερες εντολές που γράφετε θα περιέχουν <strong>εκφράσεις</strong> (expressions). Ένα απλό παράδειγμα μίας έκφρασης είναι <code>2 + 3</code>. Μία έκφραση μπορεί να διαχωριστεί σε τελεστές (operators) και τελεστέους (operands).</p>
+<p>Οι <em>τελεστές</em> επιτελούν μία λειτουργία και μπορούν να αναπαρασταθούν με σύμβολα όπως το <code>+</code> ή με ειδικές λέξεις - κλειδιά. Οι τελεστές απαιτούν κάποια δεδομένα πάνω στα οποία θα λειτουργήσουν και αυτά τα δεδομένα ονομάζονται <em>τελεστέοι</em>. Στη συγκεκριμένη περίπτωση, οι τελεστέοι είναι το <code>2</code> και το <code>3</code>.</p>
+<h2>Τελεστές</h2>
+<p>Θα ρίξουμε μία γρήγορη ματιά στους τελεστές και τη χρήση τους:</p>
+<p>Σημειώστε ότι μπορείτε να βρείτε την τιμή των εκφράσεων που δίνονται στα παραδείγματα χρησιμοποιώντας το διερμηνευτή διαδραστικά. Για παράδειγμα, για τον έλεγχο της έκφρασης <code>2 + 3</code>, χρησιμοποιήστε την κονσόλα του διαδραστικού διερμηνευτή της Python:</p>
+<div class="codehilite"><pre>&gt;&gt;&gt; 2 + 3
+5
+&gt;&gt;&gt; 3 * 5
+15
+&gt;&gt;&gt;
+</pre></div>
+
+
+<table>
+    <tr>
+        <th class="header" colspan="4">Τελεστές και η χρήση τους</th>
+    </tr>
+    <tr>
+        <th>Τελεστής</th>
+        <th>Όνομα</th>
+        <th>Εξήγηση</th>
+        <th>Παραδείγματα</th>
+    </tr>
+    <tr>
+        <td class="row_label">+</td>
+        <td>Συν</td>
+        <td>Προσθέτει δύο αντικείμενα.</td>
+        <td>Το <code>3 + 5</code> δίνει <code>8</code>. Το <code>'a' + 'b'</code> δίνει <code>'ab'</code>.</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">-</td>
+        <td>Μείον</td>
+        <td>Είτε δίνει έναν αρνητικό αριθμό, ή αφαιρεί έναν αριθμό από έναν άλλο.</td>
+        <td>Το <code>-5.2</code> δίνει έναν αρνητικό αριθμό. Το <code>50 - 24</code> δίνει <code>26</code>.</td>
+    </tr>
+    <tr>
+        <td class="row_label">*</td>
+        <td>Επί</td>
+        <td>Δίνει το γινόμενο δύο αριθμών ή μιά συμβολοσειρά (string) επαναλαμβανόμενη τόσες φορές.</td>
+        <td>Το <code>2 * 3</code> δίνει <code>6</code>. Το <code>'la' * 3</code> δίνει <code>'lalala'</code>.</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">**</td>
+        <td>Δύναμη</td>
+        <td>Επιστρέφει το x υψωμένο στη δύναμη y.</td>
+        <td>Το <code>3 ** 4</code> δίνει <code>81</code> (δηλαδή <code>3 * 3 * 3 * 3</code>).</td>
+    </tr>
+    <tr>
+        <td class="row_label">/</td>
+        <td>Διά</td>
+        <td>Διαιρεί το x με το y.</td>
+        <td>Το <code>4 / 3</code> δίνει <code>1.3333333333333333</code>.</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">//</td>
+        <td>Διαίρεση στρογγυλοποιημένη προς τα κάτω (Floor Division)</td>
+        <td>Επιστρέφει τον κοντινότερο (προς τα κάτω) ακέραιο στο πηλίκο.</td>
+        <td>Το <code>4 // 3</code> δίνει <code>1</code>.</td>
+    </tr>
+    <tr>
+        <td class="row_label">%</td>
+        <td>Υπόλοιπο</td>
+        <td>Επιστρέφει το υπόλοιπο της διαίρεσης.</td>
+        <td>Το <code>8 % 3</code> δίνει <code>2</code>. Το <code>-25.5 % 2.25</code> δίνει <code>1.5</code>.</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">&lt;&lt;</td>
+        <td>Αριστερή μετάθεση</td>
+        <td>Μεταθέτει τα δυαδικά ψηφία (bits) του αριθμού προς τα αριστερά κατά το πλήθος των θέσεων που καθορίστηκε. (Κάθε αριθμός αναπαρίσταται στη μνήμη με δυαδικά ψηφία (bits, binary digits) -δηλαδή με 0 και 1).</td>
+        <td>To <code>2 << 2</code> δίνει <code>8</code>. Το 2 αναπαριστάται ως σε bits ως <code>10</code>. Η μετάθεση προς τα αριστερά κατά 2 bits μας δίνει <code>1000</code> που παριστάνει το δεκαδικό <code>8</code>.</td>
+    </tr>
+    <tr>
+        <td class="row_label">&gt;&gt;</td>
+        <td>Δεξιά μετάθεση</td>
+        <td>Μεταθέτει τα bits του αριθμού προς τα δεξιά κατά το πλήθος των θέσεων που καθορίστηκε.</td>
+        <td>To <code>11 >> 1</code> δίνει <code>5</code>. Το <code>11</code> αναπαριστάται σε bits ως <code>1011</code> που όταν μετατεθούν δεξιά κατά 1 bit μας δίνει <code>101</code> το οποίο είναι το δεκαδικό <code>5</code>.</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">&amp;</td>
+        <td>Δυαδικό ΚΑΙ</td>
+        <td>Δυαδικό ΚΑΙ των αριθμών.</td>
+        <td>Το <code>5 & 3</code> δίνει <code>1</code>.</td>
+    </tr>
+    <tr>
+        <td class="row_label">|</td>
+        <td>Δυαδικό Ή</td>
+        <td>Δυαδικό Ή των αριθμών.</td>
+        <td>Το <code>5 | 3</code> δίνει <code>7</code>.</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">^</td>
+        <td>Δυαδικό αποκλειστικό Ή</td>
+        <td>Δυαδικό αποκλειστικό Ή των αριθμών.</td>
+        <td>Το <code>5 ^ 3</code> δίνει <code>6</code>.</td>
+    </tr>
+    <tr>
+        <td class="row_label">~</td>
+        <td>Δυαδική αντιστροφή</td>
+        <td>Το δυαδικό αντίστροφο του x είναι -(x+1).</td>
+        <td>Το <code>~5</code> δίνει <code>-6</code>.</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">&lt;</td>
+        <td>Μικρότερο από</td>
+        <td>Επιστρέφει το αν το x είναι μικρότερο από το y. Όλοι οι τελεστές σύγκρισης επιστρέφουν True (Αληθής) ή False (Ψευδής). Σημειώστε οτι τα ονόματα αυτά ξεκινούν με κεφαλαίο.</td>
+        <td>Το <code>5 < 3</code> δίνει <code>False</code> και το <code>3 < 5</code> δίνει <code>True</code>. Οι συγκρίσεις μπορούν να συνδυαστούν αλυσιδωτά κατά βούληση: Το <code>3 < 5 < 7</code> δίνει <code>True</code>.</td>
+    </tr>
+    <tr>
+        <td class="row_label">&gt;</td>
+        <td>Μεγαλύτερο από</td>
+        <td>Επιστρέφει το αν το x είναι μεγαλύτερο από το y.</td>
+        <td>Το <code>5 > 3</code> επιστρέφει <code>True</code>. Αν και οι δύο τελεστέοι είναι αριθμοί, πρώτα μετατρέπονται σε έναν κοινό τύπο. Αλλιώς, επιστρέφει πάντα <code>False</code>.</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">&lt;=</td>
+        <td>Μικρότερο ή ίσο</td>
+        <td>Επιστρέφει το αν το x είναι μικρότερο από ή ίσο με το y.</td>
+        <td>Το <code>x = 3; y = 6; x <= y</code> επιστρέφει <code>True</code>.</td>
+    </tr>
+    <tr>
+        <td class="row_label">&gt;=</td>
+        <td>Μεγαλύτερο ή ίσο</td>
+        <td>Επιστρέφει το αν το x είναι μεγαλύτερο από ή ίσο με το y.</td>
+        <td>Το <code>x = 4; y = 3; x >= 3</code> επιστρέφει <code>True</code>.</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">==</td>
+        <td>Ίσο</td>
+        <td>Συγκρίνει αν τα αντικείμενα είναι ίσα.</td>
+        <td>Το <code>x = 2; y = 2; x == y</code> επιστέφει <code>True</code>.<br/>
+        Το <code>x = 'str'; y = 'stR'; x == y</code> επιστρέφει <code>False</code>.<br/>
+        Το <code>x = 'str'; y = 'str'; x == y</code> επιστρέφει <code>True</code>.<br/>
+    </td>
+    </tr>
+    <tr>
+        <td class="row_label">!=</td>
+        <td>Διαφορετικό</td>
+        <td>Συγκρίνει αν τα αντικείμενα ΔΕΝ είναι ίσα.</td>
+        <td>Το <code>x = 2; y = 3; x != y</code> επιστρέφει <code>True</code>.</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">not</td>
+        <td>Λογικό ΌΧΙ</td>
+        <td>Αν το x είναι True, επιστρέφει False. Αν το x είναι False, επιστρέφει True.</td>
+        <td>Το <code>x = True; not x</code> επιστρέφει <code>False</code>.</td>
+    </tr>
+    <tr>
+        <td class="row_label">and</td>
+        <td>Λογικό ΚΑΙ</td>
+        <td>Το x and y επιστρέφει False αν το x είναι False, αλλιώς επιστρέφει υπολογίζει και επιστρέφει την τιμή του y.</td>
+        <td>Το <code>x = False; y = True; x and y</code> επιστρέφει <code>False</code> αφού το <code>x</code> είναι <code>False</code>. Σε αυτή την περίπτωση, η Python δε θα ελέγξει την τιμή του <code>y</code> αφού γνωρίζει οτι η αριστερή πλευρά της έκφρασης <strong>and</strong> είναι <code>False</code> που υποδηλώνει οτι ολόκληρη η έκφραση θα είναι <code>False</code> ανεξάρτητα από τις άλλες τιμές. Αυτή η τεχνική αποκαλείται <em>short-circuit evaluation</em>.</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">or</td>
+        <td>Λογικό Ή</td>
+        <td>Αν το x είναι True, επιστρέφει True, αλλιώς υπολογίζει και επιστρέφει την τιμή του y.</td>
+        <td>Το <code>x = True; y = False; x or y</code> επιστρέφει <code>True</code>. Η <em>short-circuit evaluation</em> εφαρμόζεται και εδώ.</td>
+    </tr>
+</table>
+
+<h3>Συντόμευση για μαθηματικές πράξεις και την ανάθεση</h3>
+<p>Είναι συνήθες φαινόμενο η εκτέλεση μίας μαθηματικής πράξης στα περιεχόμενα μίας μεταβλητής και στη συνέχεια η ανάθεση του αποτελέσματος πίσω στη μεταβλητή, γι' αυτό υπάρχει μία συντόμευση για αυτού του είδους τις εκφράσεις:</p>
+<p>Μπορείτε να γράψετε το:</p>
+<div class="codehilite"><pre>a = 2; a = a * 3
+</pre></div>
+
+
+<p>ως:</p>
+<div class="codehilite"><pre>a = 2; a *= 3
+</pre></div>
+
+
+<p>Παρατηρήστε ότι η δήλωση <code>μεταβλητή = μεταβλητή τέλεστής έκφραση</code> γίνεται <code>μεταβλητή τελεστής= έκφραση</code>.</p>
+<h2>Σειρά υπολογισμού (προτεραιότητα τελεστών)</h2>
+<p>Ας πούμε ότι έχουμε μία έκφραση όπως <code>2 + 3 * 4</code>. Ποιο γίνεται πρώτα, η πρόσθεση ή ο πολλαπλασιασμός; Τα μαθηματικά μας λένε ότι πρώτα πρέπει να γίνει ο πολλαπλασιασμός. Αυτό σημαίνει ότι ο τελεστής του πολλαπλασιασμού έχει υψηλότερη προτεραιότητα από τον τελεστή της πρόσθεσης.</p>
+<p>Ο ακόλουθος πίνακας μας δίνει τον πίνακα προτεραιοτήτων για την Python, από τη χαμηλότερη προς την υψηλότερη προτεραιότητα. Αυτό σημαίνει ότι σε μία δεδομένη έκφραση, η Python θα υπολογίσει τους τελεστές και τις εκφράσεις που βρίσκονται χαμηλότερα στον πίνακα πριν από αυτούς που βρίσκονται ψηλότερα.</p>
+<p>Ο παρακάτω πίνακας, αντιγραμμένος από το <a href="http://docs.python.org/3.0/reference/expressions.html#evaluation-order">εγχειρίδιο αναφοράς της Python</a>, παρέχεται χάριν πληρότητας. Είναι πολύ καλύτερο να χρησιμοποιείτε παρενθέσεις για να ομαδοποιείτε σωστά τελεστές και τελεστέους ώστε να ορίσετε ξεκάθαρα την προτεραιότητα. Έτσι το πρόγραμμα γίνεται πιο ευανάγνωστο. Δείτε την παράγραφο <a href="#changing-the-order-of-evaluation">"Αλλαγή της σειράς υπολογισμού"</a> πιο κάτω για λεπτομέρειες.</p>
+<table>
+    <tr>
+        <th class="header" colspan="2">Προτεραιότητα τελεστών</th>
+    </tr>
+    <tr>
+        <th>Τελεστής</th>
+        <th>Περιγραφή</th>
+    </tr>
+    <tr>
+        <td class="row_label">lambda</td>
+        <td>Έκφραση Lambda</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">or</td>
+        <td>Λογικό Ή</td>
+    </tr>
+    <tr>
+        <td class="row_label">and</td>
+        <td>Λογικό ΚΑΙ</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">not x</td>
+        <td>Λογικό ΟΧΙ</td>
+    </tr>
+    <tr>
+        <td class="row_label">in, not in</td>
+        <td>Έλεγχοι συμμετοχής</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">is, is not</td>
+        <td>Έλεγχοι ταυτότητας</td>
+    </tr>
+    <tr>
+        <td class="row_label">&lt;, &lt;=, &gt;, &gt;=, !=, ==</td>
+        <td>Συγκρίσεις</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">|</td>
+        <td>Δυαδικό Ή</td>
+    </tr>
+    <tr>
+        <td class="row_label">^</td>
+        <td>Δυαδικό αποκλειστικό Ή</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">&</td>
+        <td>Δυαδικό ΚΑΙ</td>
+    </tr>
+    <tr>
+        <td class="row_label">&lt;&lt;, &gt;&gt;</td>
+        <td>Μεταθέσεις</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">+, -</td>
+        <td>Πρόσθεση και αφαίρεση</td>
+    </tr>
+    <tr>
+        <td class="row_label">*, /, //, %</td>
+        <td>Πολλαπλασιασμός, Διαίρεση, Διαίρεση στρογγυλοποιημένη προς τα κάτω, Υπόλοιπο</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">+x, -x</td>
+        <td>Θετικό, Αρνητικό</td>
+    </tr>
+    <tr>
+        <td class="row_label">~x</td>
+        <td>Δυαδικό ΟΧΙ</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">**</td>
+        <td>Ύψωση σε δύναμη</td>
+    </tr>
+    <tr>
+        <td class="row_label">x.attribute</td>
+        <td>Αναφορά σε χαρακτηριστικό</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">x[index]</td>
+        <td>Subscription</td>
+    </tr>
+    <tr>
+        <td class="row_label">x[index1:index2]</td>
+        <td>Κομμάτιασμα (Slicing)</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">f(arguments ...)</td>
+        <td>Κλήση συνάρτησης</td>
+    </tr>
+    <tr>
+        <td class="row_label">(expressions, ...)</td>
+        <td>Συνένωση ή εμφάνιση πλειάδας</td>
+    </tr>
+    <tr class="even">
+        <td class="row_label">[expressions, ...]</td>
+        <td>Προβολή λίστας</td>
+    </tr>
+    <tr>
+        <td class="row_label">{key:datum, ...}</td>
+        <td>Προβολή λεξικού</td>
+    </tr>
+</table>
+
+<p>Οι τελεστές τους οποίους δεν έχουμε ακόμη συναντήσει θα εξηγηθούν σε επόμενα κεφάλαια.</p>
+<p>Τελεστές με την <em>ίδια προτεραιότητα</em> βρίσκονται στην ίδια γραμμή στον παραπάνω πίνακα. Για παράδειγμα, το <code>+</code> και το <code>-</code> έχουν την ίδια προτεραιότητα.</p>
+<h2 id="changing-the-order-of-evaluation">Αλλαγή της σειράς υπολογισμού </h2>
+<p>Για να κάνουμε τις εκφράσεις πιο ευανάγνωστες, μπορούμε να χρησιμοποιήσουμε παρενθέσεις. Για παράδειγμα, το <code>2 + (3 * 4)</code> είναι σίγουρα πιο εύκολο να το καταλάβουμε από το <code>2 + 3 * 4</code> το οποίο απαιτεί τη γνώση των προτεραιοτήτων των τελεστών. Όπως και όλα τα άλλα, οι παρενθέσεις θα πρέπει να χρησιμοποιούνται με σύνεση (μην το παρακάνετε) και να μην είναι άχρηστες (όπως π.χ. στο <code>2 + (3 + 4)</code>).</p>
+<p>Υπάρχει ένα επιπλέον πλεονέκτημα στη χρήση παρενθέσεων - μας βοηθά να αλλάξουμε τη σειρά υπολογισμού. Για παράδειγμα, αν θέλετε να γίνει η πρόσθεση πριν τον πολλαπλασιασμό σε μία έκφραση, τότε μπορείτε να γράψετε κάτι όπως <code>(2 + 3) * 4</code>.</p>
+<h2>Συσχέτιση (Associativity)</h2>
+<p>Οι τελεστές συνήθως συσχετίζονται από τα <em>αριστερά προς τα δεξιά</em> δηλαδή οι τελεστές με την ίδια προτεραιότητα υπολογίζονται από τα αριστερά προς τα δεξιά. Για παράδειγμα, το <code>2 + 3 + 4</code> υπολογίζεται ως <code>(2 + 3) + 4</code>. Μερικοί τελεστές όπως οι τελεστές ανάθεσης έχουν συσχέτιση <em>από τα δεξιά προς τα αριστερά</em> δηλ. το <code>a = b = c</code> αντιμετωπίζεται ως <code>a = (b = c)</code>.</p>
+<h2>Εκφράσεις (Expressions)</h2>
+<p>Παράδειγμα:</p>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/python</span>
+<span class="c"># Filename: expression.py</span>
+
+<span class="n">length</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">breadth</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">area</span> <span class="o">=</span> <span class="n">length</span> <span class="o">*</span> <span class="n">breadth</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Area is&#39;</span><span class="p">,</span> <span class="n">area</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Perimeter is&#39;</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">length</span> <span class="o">+</span> <span class="n">breadth</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Έξοδος:</p>
+<div class="codehilite"><pre>$ python expression.py
+Area is 10
+Perimeter is 14
+</pre></div>
+
+
+<p>Πώς δουλεύει:</p>
+<p>Το μήκος (length) και το πλάτος (breadth) του ορθογωνίου αποθηκεύονται σε μεταβλητές με το ίδιο όνομα. Χρησιμοποιούμε αυτές τις μεταβλητές για να υπολογίσουμε το εμβαδόν και την περίμετρο του ορθογωνίου με τη βοήθεια εκφράσεων. Αποθηκεύουμε το αποτέλεσμα της έκφρασης <code>length * breadth</code> στη μεταβλητή (variable) <code>area</code> και έπειτα το τυπώνουμε χρησιμοποιώντας τη συνάρτηση <code>print</code>. Στη δεύτερη περίπτωση, χρησιμοποιούμε απ' ευθείας την τιμή της έκφρασης <code>2 * (length + breadth)</code> στη συνάρτηση <code>print</code>.</p>
+<p>Επίσης, παρατηρήστε τον τρόπο με τον οποίο η Python "τυπώνει όμορφα" τα αποτελέσματα. Παρ' όλο που δεν έχουμε καθορίσει ένα κενό ανάμεσα στο <code>'Area is'</code> και στη μεταβλητή <code>area</code>, η Python το τοποθετεί για εμάς έτσι ώστε να πάρουμε μία πιο καθαρή όμορφη έξοδο και το πρόγραμμα είναι πολύ πιο ευανάγνωστο με αυτό τον τρόπο (αφού δε χρειάζεται να ανησυχούμε για τα κενά στις συμβολοσειρές που χρησιμοποιούμε για έξοδο). Αυτό είναι ένα παράδειγμα του πώς η Python κάνει τη ζωή του προγραμματιστή εύκολη.</p>
+<h2>Σύνοψη</h2>
+<p>Είδαμε πως χρησιμοποιούμε τους τελεστές, τους τελεστέους και τις εκφράσεις - αυτά αποτελούν τα βασικά δομικά στοιχεία κάθε προγράμματος. Στη συνέχεια, θα δούμε πώς τα χρησιμοποιούμε στα προγράμματά μας χρησιμοποιώντας εντολές.</p>
+        </div>
+        
+        <footer>
+            <div class="centered">
+                <p>Το παρόν ηλεκτρονικό βιβλίο είναι διαθέσιμο υπό την άδεια <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">Creative Commons BY-NC-SA 3.0</a> &amp; αποτελεί μετάφραση του <a href="http://www.swaroopch.com/notes/Python" target="_blank">A Byte Of Python</a>.</p>
+                <p>Η ελληνική έκδοση του βιβλίου μεταφράστηκε από τα μέλη του forum <a href="https://github.com/ubuntu-gr">ubuntu-gr</a>.</p>
+                <p>Σχεδιασμός ιστοσελίδας: <a href="mailto:cyberpython@gmail.com">Γεώργιος Μίγδος</a></p>
+            </div>
+        </footer>
+    </body>
+</html>
