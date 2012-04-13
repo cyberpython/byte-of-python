@@ -1,0 +1,361 @@
+/*The MIT License (MIT)
+Copyright (c) 2012 Georgios Migdos <cyberpython@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
+
+@import url('fonts/dejavu-sans/stylesheet.css');
+@import url('fonts/dejavu-sans-mono/stylesheet.css');
+@import url('fonts/dejavu-serif/stylesheet.css');
+@import url('trac.css');
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+ 
+::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+html {
+    background-color: #f8f8f8;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #f8f8f8;
+	font-size: 14px;
+	color: #333;
+	font-family: DejaVuSerif, serif;
+	margin: 0;
+	min-width: 640px;
+}
+
+header{
+    background: #333;
+    overflow: hidden;
+}
+
+header h1, header h1 a{
+    color: #fff;
+    text-shadow: none;
+    border: none;
+    padding: 30px 0;
+    margin: 0;
+    size: 300%;
+}
+
+header h1 a:hover{
+    color: #fff;
+    text-shadow: #fff 0px 0px 8px;
+}
+
+.content,.centered{
+    max-width: 720px;
+	margin: 0 auto;
+}
+
+.content{
+	padding: 80px 40px 60px 40px;
+}
+
+@media screen and (max-width: 600px){
+    
+    figure, .align-left, .align-right{
+        display: block;
+        width: 100%;
+        height: auto;
+        padding: 80px 0 60px 0;
+        margin: 20px 0;
+    }
+}
+
+figure, aside{
+    padding: 0;
+    margin: 0;
+    display: block;
+    margin: 12px auto 36px;
+    max-width: 100%;
+}
+
+figcaption{
+    color: #333;
+    font-family: DejaVuSans, sans-serif;
+    font-size: 80%;
+    line-height: 15px;
+    text-align: left;
+    font-style: italic;
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+.align-left{
+    display: inline;
+    float: left;
+    width: 33%;
+    margin-right: 36px;
+    margin-top: 6px;
+    margin-bottom: 12px;
+}
+
+.align-right{
+    display: inline;
+    float: right;
+    width: 33%;
+    margin-left: 36px;
+    margin-top: 6px;
+    margin-bottom: 12px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	font-family: DejaVuSerif, serif;
+	margin-bottom: 36px;
+	text-shadow: 2px 2px 1px #ccc;
+}
+
+h1 {font-size: 350%; margin-bottom: 100px; padding-bottom:50px; border-bottom: 1px solid #ccc;}
+h2 {font-size: 250%; margin-top: 95px;}
+h3 {font-size: 180%;}
+h4 {font-size: 160%; font-style: italic;}
+h5 {font-size: 140%; font-style: italic;}
+h6 {font-size: 120%; font-style: italic;}
+
+p, caption, td, th, dl, pre, code, address, ul, ol, blockquote, cite {
+	line-height: 21px;
+}
+
+a{
+    color: #2C7BE3;
+}
+
+p{
+    font-family: DejaVuSans, sans-serif;
+    text-align: justify;
+}
+
+hr {
+	margin-bottom: 12px;
+	border: 0;
+	border-bottom: 1px solid #ccc;
+}
+
+a:link, a:visited, a:hover, a:focus{
+    text-decoration: none;
+} 
+a:hover,a:focus {
+    color: #2C7BE3;
+    text-shadow: #006EFF 0px 0px 2px;
+}
+
+a:active {}
+
+ul ul, ol ol, ul ol, ol ul{
+    margin: 12px;
+}
+
+dt {
+    color: #111;
+	font-weight: bold;
+	border-bottom: 1px double #ddd;
+}
+
+dt.important{
+    color: #600;
+}
+
+dt.caution{
+    color: #FF7100;
+}
+
+
+dd {
+    color: #3a3a3a;
+    /*font-size: 95%;*/
+	padding-left: 36px;
+	margin: 0 0 12px 0;
+}
+
+table {
+    margin-top: 50px;
+	border-color: #b3b3b3;
+	border-width: 1px;
+	border-style: solid;
+	border-right-style: none;
+	border-bottom-width: 4px;
+	border-collapse: collapse;
+}
+
+th {
+	background-color: #bababa;
+	color: #fff;
+	border-bottom-color: #aaa;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-right-color: #aaa;
+	border-right-width: 1px;
+	border-right-style: solid;
+	padding: 10px 12px;
+	font-weight: bold;
+}
+
+th.header{
+	font-size: 120%;
+	font-weight: bold;
+}
+
+td {
+    background-color: #fcfcfc;
+	border-bottom-color: #ccc;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-right-color: #ccc;
+	border-right-width: 1px;
+	border-right-style: solid;
+
+	padding: 2px 12px;
+}
+
+td.row_label{
+    text-align: center;
+    color: #2379BD;
+}
+
+tr.even td {
+    background-color: #f4f4f4;
+}
+
+caption {	
+	font-style: italic;
+	text-align: left;
+}
+
+blockquote {
+	color: #333;
+	font-style: italic;
+	margin: 14px;
+    margin-top: 17px;
+    margin-bottom: 32px;
+    margin-left: 36px;
+    padding-left: 24px;
+    border-left: 3px solid #ccc;
+}
+
+blockquote cite{
+    display: block;
+    text-align: right;
+    font-size: 16px;
+    padding-right: 36px;
+    color: #000;
+}
+
+blockquote cite:before{
+    content: '- ';
+}
+
+pre,code,.code{
+    font-family: DejaVuSansMono, monospace;
+    /*overflow-x: auto;*/
+    background-color: #fff;
+	display: block;
+	margin: 0 0 12px 0;
+}
+
+code{
+    display: inline;
+    letter-spacing: 1px;
+    margin: 5px;
+    border: 1px #ddd solid;
+    padding: 0 2px;
+}
+
+.codehilite pre{
+    padding: 12px;
+    margin: 0;
+    letter-spacing: 0;
+    display: block;
+    background-color: #fff;
+    /*white-space: pre;*/
+    white-space: pre-wrap;
+    border-color: #aaa;
+	border-width: 1px;
+	border-style: solid;
+	padding: 12px;
+	border-left:35px solid #aaa;
+	/*max-height: 360px;*/
+}
+
+@media print {
+    html, body{
+        background: #fff;
+    }
+    
+    header, footer{
+        display: none;
+    }
+    
+    h1, h2, h3, h4, h5, h6{
+        text-shadow: none;
+    }
+
+    pre,code,.code{
+        overflow-x: visible;
+        white-space: pre-wrap;
+        max-height: none;
+    }
+}
+
+abbr, acronym{cursor: help;}
+
+del {color: #999;}
+
+ins {font-style: italic;}
+
+small, sup, sub{font-size: 75%;}
+
+sup a, sup a:link, sup a:active, sup a:visited, sub a, sub a:link, sub a:active, sub a:visited{
+    border-bottom: none;
+}
+
+.footnote{
+    margin-top: 100px;
+}
+
+footer{
+    background: #333;
+    color: #fff;
+    padding: 50px;
+}
+
+footer a, footer a:link, footer a:visited, footer a:active{
+    color: #2697EE;
+    border-bottom: none;
+}
+
+footer a:hover{
+    color: #2697EE;
+    text-shadow: #00A6FF 0px 0px 2px;
+}
+
