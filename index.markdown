@@ -14,7 +14,7 @@ layout: default
 6. [Τα βασικά](basics.html)
 7. [Τελεστές και εκφράσεις](operators_and_expressions.html)
 8. [Έλεγχος ροής](control_flow.html)
-9. Συναρτήσεις
+9. [Συναρτήσεις](functions.html)
 10. Αρθρώματα
 11. Δομές δεδομένων
 12. Επίλυση προβλημάτων
