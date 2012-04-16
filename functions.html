@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8" />
+        <link href="stylesheets/style.css" rel="stylesheet" type="text/css" />
+        <title>Byte of Python - Ελληνική Έκδοση</title>
+    </head>
+    
+    <body>
+        <header>
+            <div class="centered">
+                <h1><a href="index.html">Byte of Python - Ελληνική Έκδοση</a></h1>
+            </div>
+        </header>
+        
+        <div class="content">
+            <h1>Συναρτήσεις</h1>
+<h2>Εισαγωγή</h2>
+<p>Οι συναρτήσεις είναι επαναχρησιμοποιήσιμα μέρη προγραμμάτων. Σας επιτρέπουν να δίνετε ένα όνομα σε ένα σύνολο εντολών και να τρέχετε εκείνο το σύνολο εντολών χρησιμοιώντας το όνομά τους, οπουδήποτε στο προγραμμά σας και όσες φορές θέλετε. Αυτό είναι γνωστό σαν <em>κλήση</em> (calling) της συνάρτησης. Έχουμε ήδη χρησιμοποιήσει πολλές ενσωματωμένες συναρτήσεις όπως τη <code>len</code> και τη <code>range</code>.</p>
+<p>Η έννοια των συναρτήσεων είναι πιθανόν <strong>το πιο σπουδαίο</strong> δομικό στοιχείο οποιουδήποτε μη στοιχειώδους προγράμματος (σε όλες τις γλώσσες προγραμματισμού), γι' αυτό θα διερευνήσουμε διάφορες πτυχές των συναρτήσεων σε αυτό το κεφάλαιο.</p>
+<p>Οι συναρτήσεις ορίζονται χρησιμοποιώντας τη λέξη κλειδί <code>def</code>, μετά την οποία ακολουθεί ένα όνομα που <strong>ταυτοποιεί</strong> την εκάστοτε συνάρτηση και κατόπιν ακολουθεί ένα ζευγάρι παρενθέσεων που μπορούν να περικλείουν μερικά ονόματα μεταβλητών, και η γραμμή τελειώνει με διπλή τελεία (<code>:</code>). Παρακάτω ακολουθεί ένα απλό παράδειγμα με ένα σύνολο εντολών που αποτελούν μέρος αυτής της συνάρτησης. Με αυτό το παράδειγμα θα δείτε ότι στην πραγματικότητα είναι πολύ απλό:</p>
+<p>Παράδειγμα:</p>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/python</span>
+<span class="c"># Filename: function1.py</span>
+
+<span class="k">def</span> <span class="nf">sayHello</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Hello World!&#39;</span><span class="p">)</span> <span class="c"># σύνολο εντολών που ανήκουν στη συνάρτηση</span>
+<span class="c"># Τέλος της συνάρτησης</span>
+
+<span class="n">sayHello</span><span class="p">()</span> <span class="c"># κλήση της συνάρτησης</span>
+<span class="n">sayHello</span><span class="p">()</span> <span class="c"># κλήση της συνάρτησης ξανά</span>
+</pre></div>
+
+
+<p>Έξοδος:</p>
+<div class="codehilite"><pre>$ python function1.py
+Hello World!
+Hello World!
+</pre></div>
+
+
+<p>Πώς δουλεύει:</p>
+<p>Oρίζουμε μια συνάρτηση με το όνομα <code>sayHello</code> ακολουθώντας τη σύνταξη όπως εξηγήσαμε παραπάνω. Αυτή η συνάρτηση δεν έχει παραμέτρους γι' αυτό δε δηλώνονται καθόλου μεταβλητές ανάμεσα στις παρενθέσεις. Οι παράμετροι στις συναρτήσεις είναι απλά η είσοδος στη συνάρτηση ώστε να περνάμε διαφορετικές τιμές στη συνάρτηση και να παίρνουμε αντίστοιχα αποτελέσματα.</p>
+<p>Σημειώστε ότι μπορούμε να καλούμε την ίδια συνάρτηση δύο φορές, δηλαδή δε χρειάζεται να γράφουμε τον ίδιο κώδικα δύο φορές.</p>
+<h2>Παράμετροι συναρτήσεων</h2>
+<p>Μια συνάρτηση μπορεί να δεχθεί παραμέτρους, οι οποίες είναι τιμές που δίνετε στη συνάρτηση, έτσι ώστε αυτή να μπορεί να κάνει κάτι αξιοποιώντας αυτές τις τιμές. Αυτές οι παράμετροι μοιάζουν με τις μεταβλητές, διαφέροντας ως προς το ότι οι τιμές αυτών των μεταβλητών ορίζονται όταν καλούμε τη συνάρτηση και τους έχουν ήδη εκχωρηθεί τιμές όταν τρέχει η συνάρτηση.</p>
+<p>Οι παράμετροι καθορίζονται μέσα στο ζευγάρι των παρενθέσεων στον ορισμό της συνάρτησης και διαχωρίζονται με κόμμα. Όταν καλούμε τη συνάρτηση δίνουμε και τις τιμές με τον ίδιο τρόπο. Σημείωση για την ορολογία που χρησιμοποιείται: οι ονομασίες που δίνετε στον ορισμό της συνάρτησης ονομάζονται παράμετροι ενώ οι τιμές που δίνετε όταν καλείτε τη συνάρτηση ονομάζονται ορίσματα.</p>
+<p>Παράδειγμα:</p>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/python</span>
+<span class="c"># Filename: func_param.py</span>
+
+<span class="k">def</span> <span class="nf">printMax</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s">&#39;είναι το μέγιστο&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s">&#39;είναι ίσο με το&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="s">&#39;είναι το μέγιστο&#39;</span><span class="p">)</span>
+
+<span class="n">printMax</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="c"># δίνουμε απ&#39; ευθείας κυριολεκτικές τιμές</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">7</span>
+
+<span class="n">printMax</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="c"># δίνουμε μεταβλητές σαν ορίσματα</span>
+</pre></div>
+
+
+<p>Έξοδος:</p>
+<div class="codehilite"><pre>$ python func_param.py
+4 είναι το μέγιστο
+7 είναι το μέγιστο
+</pre></div>
+
+
+<p>Πώς δουλεύει:</p>
+<p>Εδώ ορίζουμε μια συνάρτηση που ονομάζεται <code>printMax</code> με δυο παραμέτρους τις <code>a</code> και <code>b</code>. Bρίσκουμε το μεγαλύτερο νούμερο χρησιμοποιώντας μια απλή εντολή <code>if .. else</code> και μετά τυπώνουμε το μεγαλύτερο νούμερο.</p>
+<p>Στην πρώτη χρήση της <code>printMax</code>, απευθείας δίνουμε τους αριθμούς, δηλαδή τα ορίσματα. Στη δεύτερη χρήση της, καλούμε τη συνάρτηση χρησιμοποιώντας μεταβλητές. Η <code>printMax(x, y)</code> αποδίδει την τιμή του ορίσματος <code>x</code> στην παράμετρο <code>a</code> και την τιμή του ορίσματος <code>y</code> στην παράμετρο <code>b</code>. H συνάρτηση <code>printMax</code> λειτουργεί με τον ίδιο τρόπο και στις δυο περιπτώσεις.</p>
+<h2>Τοπικές μεταβλητές (Local variables)</h2>
+<p>Όταν δηλώνετε μεταβλητές μέσα σε ένα ορισμό συνάρτησης, αυτές δεν έχουν καμία σχέση με άλλες μεταβλητές που έχουν την ίδια ονομασία και χρησιμοποιούνται έξω απο αυτή τη συνάρτηση, δηλαδή τα ονόματα των μεταβλητών χρησιμοποιούνται μόνο <em>τοπικά</em> στη συνάρτηση. Αυτό ονομάζεται <em>εμβέλεια</em> (scope) των μεταβλητών. Όλες οι μεταβλητές έχουν την εμβέλεια του τμήματος όπου έχουν δηλωθεί, αρχίζοντας από το σημείο στο οποίο ορίζεται το όνομα.</p>
+<p>Παράδειγμα:</p>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/python</span>
+<span class="c"># Filename: func_local.py</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Το x είναι&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Άλλαξα το τοπικό x σε&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Το x είναι ακόμα&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Έξοδος:</p>
+<div class="codehilite"><pre>$ python func_local.py
+Το x είναι 50
+Άλλαξα το τοπικό x σε  2
+Το x είναι ακόμα 50
+</pre></div>
+
+
+<p>Πώς δουλεύει:</p>
+<p>Στη συνάρτηση ,την πρώτη φορά που χρησιμοποιούμε την τιμή με το όνομα <code>x</code>, η Python χρησιμοποιεί την τιμή της παραμέτρου που έχει δηλωθεί στη συνάρτηση.</p>
+<p>Κατόπιν εκχωρούμε την τιμή <code>2</code> στο <code>x</code>. Η ονομασία <code>x</code> είναι τοπική στη συνάρτησή μας. Έτσι όταν αλλάζουμε την τιμή του <code>x</code> στη συνάρτηση, το <code>x</code> που ορίστηκε στο κύριο τμήμα δεν επηρεάζεται.</p>
+<p>Στην τελευταία κλήση της συνάρτησης <code>print</code>, παρουσιάζουμε την τιμή <code>x</code> στο κύριο τμήμα και επιβεβαιώνουμε ότι δεν έχει επηρεαστεί.</p>
+<h2>Χρήση της εντολής global</h2>
+<p>Εάν θέλετε να εκχωρήσετε μια τιμή σε ένα όνομα που ορίζεται στο κορυφαίο επίπεδο του προγράμματος (δηλαδή όχι μέσα σε κάποιου είδους εμβέλεια όπως σε συναρτήσεις ή κλάσεις), τότε πρέπει να πείτε στην Python ότι το όνομα δεν είναι τοπικό αλλά <em>καθολικό</em> (global). Αυτό γίνεται με τη χρήση της εντολής <code>global</code>. Είναι αδύνατον να εκχωρήσετε μια τιμή σε μια μεταβλητή που ορίζεται εκτός μιας συνάρτησης χωρίς την εντολή <code>global</code>. Μπορείτε να χρησιμοποιήσετε τις τιμές τέτοιων μεταβλητών που ορίζονται έξω από τη συνάρτηση (υποθέτοντας ότι δεν υπάρχουν μεταβλητές με το ίδιο όνομα μέσα στη συνάρτηση). Ωστόσο, κάτι τέτοιο δεν προτείνεται και πρέπει να αποφεύγεται μιας και δεν είναι ξεκάθαρο για τον αναγνώστη του προγράμματος για το πού βρίσκεται ο ορισμός της μεταβλητής. Χρησιμοποιώντας την εντολή <code>global</code> γίνεται ξεκάθαρο ότι η μεταβλητή βρίσκεται σε ένα εξωτερικό τμήμα εντολών.</p>
+<p>Παράδειγμα:</p>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/python</span>
+<span class="c"># Filename: func_global.py</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">x</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Το x είναι&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Άλλαξα το καθολικό x σε&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">func</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Η τιμή του x είναι&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Έξοδος:</p>
+<div class="codehilite"><pre>$ python func_global.py
+Το x είναι 50
+Άλλαξα το καθολικό x σε 2
+Η τιμή του x είναι 2
+</pre></div>
+
+
+<p>Πώς δουλεύει:</p>
+<p>Η εντολή <code>global</code> χρησιμοποιείται για να δηλώσει ότι το <code>x</code> είναι μια καθολική μεταβλητή, γι' αυτό το λόγο όταν εκχωρούμε μια τιμή για το <code>x</code> μέσα στη συνάρτηση, αυτή η αλλαγή απεικονίζεται όταν χρησιμοποιούμε την τιμή του <code>x</code> στο κυρίως τμήμα.</p>
+<p>Μπορείτε να καθορίσετε περισσότερες από μία καθολικές μεταβλητές χρησιμοποιώντας την ίδια εντολή <code>global</code>. Για παράδειγμα <code>global x, y, z</code>.</p>
+<h2>Χρήση της εντολής nonlocal</h2>
+<p>Έχουμε δει μέχρι τώρα πώς να έχουμε πρόσβαση σε μεταβλητές σε τοπική και καθολική εμβέλεια. Αλλά υπάρχει και ένα άλλο είδος εμβέλειας που ονομάζεται <em>μη τοπική εμβέλεια</em> (nonlocal scope) και είναι μεταξύ των δυο παραπάνω τύπων εμβέλειας. Οι μεταβλητές μη τοπικής εμβέλειας παρατηρούνται όταν ορίζετε συναρτήσεις μέσα στις συναρτήσεις.</p>
+<p>Αφού όλα στη Python είναι εκτελέσιμος κώδικας, μπορείτε να ορίσετε συναρτήσεις οπουδήποτε.</p>
+<p>Ας δούμε ένα παράδειγμα:</p>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/python</span>
+<span class="c"># Filename: func_nonlocal.py</span>
+
+<span class="k">def</span> <span class="nf">func_outer</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Το x είναι&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">func_inner</span><span class="p">():</span>
+        <span class="n">nonlocal</span> <span class="n">x</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+
+    <span class="n">func_inner</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Το τοπικό x άλλαξε σε&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">func_outer</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Έξοδος:</p>
+<div class="codehilite"><pre>$ python func_nonlocal.py
+Το x είναι 2
+Το τοπικό x άλλαξε σε 5
+</pre></div>
+
+
+<p>Πώς δουλεύει:</p>
+<p>Όταν είμαστε μέσα στην <code>func_inner</code>, το <code>x</code> που ορίζεται στην πρώτη γραμμή του <code>func_outer</code>, δεν έχει ούτε τοπική ούτε καθολική εμβέλεια. Δηλώνουμε ότι χρησιμοποιούμε αυτό το <code>x</code> με την εντολή <code>nonlocal x</code> και έτσι αποκτούμε πρόσβαση σε αυτή τη μεταβλητή.</p>
+<p>Προσπαθήστε αρχικά αλλάζοντας το <code>nonlocal x</code> σε <code>global x</code>, και έπειτα αφαιρώντας εντελώς την εντολή, να παρατηρήσετε τη διαφορά μεταξύ αυτών των δύο περιπτώσεων.</p>
+<h2>Προεπιλεγμένες τιμές ορίσματος</h2>
+<p>Σε κάποιες συναρτήσεις ίσως να θέλουμε να κάνουμε μερικές παραμέτρους τους <em>προαιρετικές</em> και να χρησιμοποιήσουμε <em>προεπιλεγμένες τιμές</em> εάν ο χρήστης δε θέλει να δώσει τιμές σε τέτοιες παραμέτρους. Αυτό μπορεί να επιτευχθεί με τη βοήθεια των <strong>προεπιλεγμένων τιμών ορίσματος</strong>. Μπορείτε να καθορίσετε προεπιλεγμένες τιμές ορισμάτων για παραμέτρους, τοποθετώντας μετά το όνομα της παραμέτρου στον ορισμό της συνάρτησης τον τελεστή εκχώρησης (<code>=</code>) ακολουθούμενο απο την προεπιλεγμένη τιμή.</p>
+<p>Σημειώστε ότι η προεπιλεγμένη τιμή ορίσματος πρέπει να είναι μια σταθερά. Για την ακρίβεια <strong>η προεπιλεγμένη τιμή ορίσματος πρέπει να είναι αμετάβλητη (immutable)</strong> -αυτό εξηγείται με λεπτομέρειες στα επόμενα κεφάλαια. Προς το παρόν, είναι αρκετό να το θυμάστε.</p>
+<p>Παράδειγμα:</p>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/python</span>
+<span class="c"># Filename: func_default.py</span>
+
+<span class="k">def</span> <span class="nf">say</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">times</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">message</span> <span class="o">*</span> <span class="n">times</span><span class="p">)</span>
+
+<span class="n">say</span><span class="p">(</span><span class="s">&#39;Hello&#39;</span><span class="p">)</span>
+<span class="n">say</span><span class="p">(</span><span class="s">&#39;World&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Έξοδος:</p>
+<div class="codehilite"><pre>$ python func_default.py
+Hello
+WorldWorldWorldWorldWorld
+</pre></div>
+
+
+<p>Πώς δουλεύει:</p>
+<p>Η συνάρτηση με το όνομα <code>say</code> χρησιμοποιείται για να τυπώσει μια συμβολοσειρά, τόσες φορές όσες έχει καθοριστεί. Εάν δεν έχει δοθεί τιμή ,τότε από προεπιλογή η συμβολοσειρά τυπώνεται μια φορά. Αυτό το πετυχαίνουμε καθορίζοντας μια προεπιλεγμένη τιμή ίση με <code>1</code> για τη παράμετρο <code>times</code>.</p>
+<p>Στην πρώτη χρήση της συνάρτησης <code>say</code> παρέχουμε μόνο τη συμβολοσειρά και τυπώνει τη συμβολοσειρά μόνο μια φορά. Στη δεύτερη χρήση της <code>say</code> παρέχουμε και τη συμβολοσειρά και ένα όρισμα <code>5</code> δηλώνοντας έτσι ότι θέλουμε να πούμε (say) το μήνυμα της συμβολοσειράς 5 φορές.</p>
+<dl>
+<dt class="important">Σημαντικό </dt>
+<dd>
+<p>Μόνο σε εκείνες τις παραμέτρους, οι οποίες βρίσκονται στο τέλος της λίστας παραμέτρων, μπορούν να δοθούν προεπιλεγμένες τιμές ορίσματος, δηλαδή δε μπορούμε να έχουμε μια παράμετρο με προεπιλεγμένη τιμή ορίσματος πριν από μια παράμετρο χωρίς προεπιλεγμένη τιμή ορίσματος, στη σειρά των παραμέτρων που έχουν δηλωθεί στη λίστα παραμέτρων της συνάρτησης.
+Αυτό συμβαίνει διότι οι τιμές εκχωρούνται στις παραμέτρους με τη θέση τους. Για παράδειγμα η <code>def func(a, b=5)</code> είναι έγκυρη αλλά η <code>def func(a=5, b)</code> δεν είναι.</p>
+</dd>
+</dl>
+<h2>Ορίσματα με λέξεις-κλειδιά (Keyword Arguments)</h2>
+<p>Εάν έχουμε κάποιες συναρτήσεις με πολλές παραμέτρους και θέλουμε να καθορίσουμε με ακρίβεια μόνο μερικές από αυτές ,τότε μπορούμε να δώσουμε τιμές μόνο σε αυτές χρησιμοποιώντας τα ονόματά τους, δηλ. χρησιμοποιούμε τα όνοματα των παραμέτρων αντί της θέσης τους (την οποία χρησιμοποιούσαμε μέχρι τώρα) για να καθορίσουμε τα ορίσματα της συνάρτησης.</p>
+<p>Έτσι έχουμε δύο πλεονεκτήματα, πρώτον η χρήση της συνάρτησης γίνεται ευκολότερη επειδή δεν χρειάζεται να ανησυχούμε για τη διάταξη των ορισμάτων. Δεύτερον, μπορούμε να δώσουμε τιμές μόνο σε εκείνες τις παραμέτρους που θέλουμε, δεδομένου ότι οι άλλες παράμετροι έχουν προεπιλεγμένες τιμές ορίσματος.</p>
+<p>Παράδειγμα:</p>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/python</span>
+<span class="c"># Filename: func_key.py</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;Το a είναι&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s">&#39;και το b είναι&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s">&#39;και το c είναι&#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="n">func</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">func</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">func</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Έξοδος:</p>
+<div class="codehilite"><pre>$ python func_key.py
+Το a είναι 3 και το b είναι 7 και το c είναι 10
+Το a είναι 25 και το b είναι 5 και το c είναι 24
+Το a είναι 100 και το b είναι 5 και το c είναι 50
+</pre></div>
+
+
+<p>Πώς δουλεύει:</p>
+<p>Η συνάρτηση με την ονομασία <code>func</code> έχει μια παράμετρο χωρίς προεπιλεγμένη τιμή ορίσματος και ακολουθείται από δύο παραμέτρους με προεπιλεγμένες τιμές ορίσματος. Στην πρώτη χρήση, <code>func(3, 7)</code> η παράμετρος <code>a</code> παίρνει την τιμή <code>3</code>, η παράμετρος <code>b</code> παίρνει την τιμή <code>7</code> και η <code>c</code> παίρνει την προεπιλεγμένη του <code>10</code>.</p>
+<p>Στην δεύτερη χρήση <code>func(25, c=24)</code>, η μεταβλητή <code>a</code> παίρνει την τιμή του <code>25</code> εξαιτίας της θέσης του ορίσματος. Κατόπιν η παράμετρος <code>c</code> παίρνει την τιμή του <code>24</code> εξαιτίας της ονομασίας δηλ. ορίσματα με λέξεις κλειδιά. Η μεταβλητή <code>b</code> παίρνει την προεπιλεγμένη τιμή του <code>5</code>.</p>
+<p>Στην τρίτη χρήση <code>func(c=50, a=100)</code> ,χρησιμοποιούμε μόνο ορίσματα με λέξεις κλειδιά για να καθορίσουμε τις τιμές. Σημειώστε ότι καθορίζουμε τιμή για την παράμετρο <code>c</code> πριν καθορίσουμε για την <code>a</code> ακόμα κι αν η <code>a</code> είναι ορισμένη πριν από τη <code>c</code> στον ορισμό της συνάρτησης.</p>
+<h2>Παράμετροι VarArgs</h2>
+<dl>
+<dt class="note">Σημείωση </dt>
+<dd>
+<p>Ίσως θα έπρεπε να γράψουμε για αυτό σε επόμενα κεφάλαια επειδή δεν έχουμε μιλήσει ακόμα για τις λίστες και τα λεξικά.</p>
+</dd>
+</dl>
+<p>Μερικές φορές ίσως θέλουμε να ορίσουμε μια συνάρτηση η οποία μπορεί να λάβει οποιοδήποτε αριθμό παραμέτρων και αυτό μπορεί να επιτευχθεί χρησιμοποιώντας αστερίσκους <code>*</code>.</p>
+<p>Παράδειγμα:</p>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/python</span>
+<span class="c"># Filename: total.py</span>
+
+<span class="k">def</span> <span class="nf">total</span><span class="p">(</span><span class="n">initial</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="o">*</span><span class="n">numbers</span><span class="p">,</span> <span class="o">**</span><span class="n">keywords</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">initial</span>
+    <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="n">number</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keywords</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="n">keywords</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">count</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">total</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">vegetables</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">fruits</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Έξοδος:</p>
+<div class="codehilite"><pre>$ python total.py
+166
+</pre></div>
+
+
+<p>Πώς δουλεύει:</p>
+<p>Όταν δηλώνουμε μία παράμετρο με αστερίσκο, όπως το <code>*param</code>, τότε όλα τα ορίσματα των οποίων η θέση βρίσκεται από αυτό το σημείο μέχρι το τέλος, συγκεντρώνονται ως μία λίστα με το όνομα <code>param</code>. Παρομοίως, όταν δηλώνουμε μία παράμετρο με διπλό αστερίσκο όπως το <code>**param</code>, τότε όλα τα ορίσματα με λέξη-κλειδί (όνομα), από αυτό το σημείο μέχρι το τέλος συγκεντρώνονται ως ένα λεξικό με το όνομα <code>param</code>.</p>
+<p>Θα εξερευνήσουμε τις λίστες και τα λεξικά σε <a href="data_structures.html">επόμενο κεφάλαιο</a>.</p>
+<h2>Παράμετροι μόνο με λέξεις-κλειδιά</h2>
+<p>Αν θέλουμε να καθορίσουμε παραμέτρους με λέξεις-κλειδιά έτσι ώστε να είναι διαθέσιμες μόνον σαν λέξεις κλειδιά και όχι σαν ορίσματα σε συγκεκριμένες θέσεις, τότε αυτές πρέπει να δηλωθούν μετά από μια παράμετρο με αστερίσκο.</p>
+<p>Παράδειγμα:</p>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/python</span>
+<span class="c"># Filename: keyword_only.py</span>
+
+<span class="k">def</span> <span class="nf">total</span><span class="p">(</span><span class="n">initial</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="o">*</span><span class="n">numbers</span><span class="p">,</span> <span class="n">vegetables</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">initial</span>
+    <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="n">number</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="n">vegetables</span>
+    <span class="k">return</span> <span class="n">count</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">total</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">vegetables</span><span class="o">=</span><span class="mi">50</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">total</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="c"># Προκαλεί σφάλμα καθώς δεν έχουμε ορίσει προεπιλεγμένη τιμή για τη μεταβλητή &#39;vegetables&#39;</span>
+</pre></div>
+
+
+<p>Έξοδος:</p>
+<div class="codehilite"><pre>$ python keyword_only.py
+66
+Traceback (most recent call last):
+ File &quot;keyword_only.py&quot;, line 12, in &lt;module&gt;
+total(10, 1, 2, 3)
+TypeError: total() needs keyword-only argument vegetables
+</pre></div>
+
+
+<p>Πώς δουλεύει</p>
+<p>Η δήλωση παραμέτρων μετά από μια παράμετρο με αστερίσκο, έχει ως αποτέλεσμα ορίσματα με λέξεις κλειδιά μόνο. Εάν σε αυτά τα ορίσματα δε δίνεται μια προεπιλεγμένη τιμή, τότε οι κλήσεις στη συνάρτηση θα δώσουν σφάλμα εάν το όρισμα με λέξη-κλειδι δεν δίνεται, όπως φαίνεται και παραπάνω.</p>
+<p>Εάν θέλετε να έχετε ορίσματα με λέξεις-κλειδιά μόνον αλλά δεν χρειάζεστε μια παράμετρο με αστερίσκο, τότε χρησιμοποιείτε μόνο του τον αστερίσκο χωρις καμία ονομασία, όπως το <code>def total(initial=5, *, vegetables)</code>.</p>
+<h2>Η εντολή return</h2>
+<p>Η εντολή <code>return</code> χρησιμοποιείται για να έχουμε επιστροφή από μια συνάρτηση, δηλαδή να βγούμε από τη συνάρτηση. Μπορούμε επίσης, προαιρετικά, να <em>επιστρέψουμε μια τιμή</em> από την συνάρτηση.</p>
+<p>Παράδειγμα:</p>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c"># Filename: func_return.py</span>
+
+<span class="k">def</span> <span class="nf">maximum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span>
+    <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">&#39;Οι αριθμοί είναι ίσοι&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">y</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">maximum</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Έξοδος:</p>
+<div class="codehilite"><pre>$ python func_return.py
+3
+</pre></div>
+
+
+<p>Πώς δουλεύει:</p>
+<p>Η συνάρτηση <code>maximum</code> επιστρέφει το μέγιστο (maximum) των παραμέτρων, και σε αυτή την περίπτωση των αριθμών που παρέχονται στη συνάρτηση. Χρησιμοποιεί μια απλή εντολή <code>if .. else</code> για να βρει τη μεγαλύτερη τιμή και μετά <em>επιστρέφει αυτή την τιμή</em>.</p>
+<p>Σημειώνουμε ότι η εντολή <code>return</code> χωρίς μια τιμή είναι ισοδύναμη με την <code>return None</code>. Το <code>None</code> είναι ένας ειδικός τύπος στην Python που αντιπροσωπεύει τη μηδαμινότητα. Για παράδειγμα, χρησιμοποιείται για να δείξει ότι μια μεταβλητή δεν έχει καμία τιμή αν έχει την τιμή <code>None</code>.</p>
+<p>Kάθε συνάρτηση σιωπηρά περιέχει μια εντολή <code>return None</code> στο τέλος της εκτός κι αν έχουμε γράψει τη δική μας εντολή επιστροφής. Αυτό μπορείτε να το δείτε τρέχοντας την <code>print(someFunction())</code> όπου η συνάρτηση <code>someFunction</code> δε χρησιμοποιεί την εντολή <code>return</code>:</p>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">someFunction</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+
+
+<p>Η εντολή <code>pass</code> χρησιμοποιείται στην Python για να δείξει ένα άδειο τμήμα εντολών.</p>
+<dl>
+<dt>Σημείωση</dt>
+<dd>
+<p>Υπάρχει μία ενσωματωμένη συνάρτηση που ονομάζεται <code>max</code> η οποία ήδη εφαρμόζει την λειτουργία εύρεσης του μέγιστου, οπότε χρησιμοποιείστε αυτή την ενσωματωμένη λειτουργία όποτε είναι δυνατόν.</p>
+</dd>
+</dl>
+<h2>Συμβολοσειρές τεκμηρίωσης (DocStrings)</h2>
+<p>Η Python έχει ένα θαυμάσιο χαρακτηριστικό που ονομάζεται <em>συμβολοσειρές τεκμηρίωσης</em> (documentation strings) και συνήθως αναφέρεται με τη συντομογραφία <em>DocStrings</em>. Οι συμβολοσειρές τεκμηρίωσης είναι ένα σπουδαίο εργαλείο που πρέπει να χρησιμοποιείτε διότι βοηθάει να τεκμηριώσετε το πρόγραμμα καλύτερα και έτσι γίνεται πιο εύκολα κατανοητό. Το εντυπωσιακό είναι ότι μπορούμε για παράδειγμα να επιστρέψουμε τη συμβολοσειρά τεκμηρίωσης από μια συνάρτηση , ενώ το πρόγραμμα τρέχει!</p>
+<div class="codehilite"><pre><span class="n">Example</span><span class="p">:</span>
+
+<span class="c">#!/usr/bin/python</span>
+<span class="c"># Filename: func_doc.py</span>
+
+<span class="k">def</span> <span class="nf">printMax</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Τυπώνει το μέγιστο μεταξύ δύο αριθμών.</span>
+
+<span class="sd">    Οι δύο τιμές πρέπει να είναι ακέραιου τύπου.&#39;&#39;&#39;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c"># μετατροπή σε ακεραίους, αν είναι δυνατόν</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;Το&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s">&#39;είναι το μέγιστο&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;Το&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;είναι το μέγιστο&#39;</span><span class="p">)</span>
+
+<span class="n">printMax</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">printMax</span><span class="o">.</span><span class="n">__doc__</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre>$ python func_doc.py
+Το 5 είναι το μέγιστο
+Τυπώνει το μέγιστο μεταξύ δύο αριθμών.
+
+    Οι δύο τιμές πρέπει να είναι ακέραιου τύπου.
+</pre></div>
+
+
+<p>Πώς δουλεύει:</p>
+<p>Mία συμβολοσειρά στην πρώτη λογική γραμμή της συνάρτησης είναι η συμβολοσειρά τεκμηρίωσης για αυτή τη συνάρτηση. Σημειώστε ότι οι συμβολοσειρές τεκμηρίωσης εφαρμόζονται και στα αρθρώματα (modules) και στις κλάσεις (classes), όπως θα μάθουμε στα αντίστοιχα κεφάλαια.</p>
+<p>Η σύμβαση που ακολουθείται για μια συμβολοσειρά τεκμηρίωσης είναι μια συμβολοσειρά πολλών γραμμών, όπου η πρώτη γραμμή αρχίζει με ένα κεφαλαίο γράμμα και τελειώνει με μια τελεία. Κατόπιν η δεύτερη γραμμή είναι κενή και ακολουθεί η τρίτη γραμμή που έχει κάθε λεπτομερή εξήγηση. Προτείνεται να ακολουθείτε ακριβώς αυτή τη σύμβαση για όλες τις συμβολοσειρές τεκμηρίωσης που αφορούν όλες τις μη τετριμμένες συναρτήσεις (non-trivial functions).</p>
+<p>Μπορούμε να έχουμε πρόσβαση στη συμβολοσειρά τεκμηρίωσης της συνάρτησης <code>printMax</code> χρησιμοποιώντας το χαρακτηριστικό (attribute) <code>__doc__</code> (σημειώστε τις διπλές κάτω παύλες) της συνάρτησης. Θυμηθείτε όμως ότι η Python αντιμετωπίζει τα πάντα σαν αντικείμενα, και αυτό συμπεριλαμβάνει και τις συναρτήσεις. Θα μάθουμε περισσότερα για τα αντικείμενα στο κεφάλαιο για τις κλάσεις.</p>
+<p>Εάν έχετε χρησιμοποιήσει την <code>help()</code> στην Python, τότε έχετε δει ήδη την χρήση των συμβολοσειρών τεκμηρίωσης. Αυτό που κάνει η <code>help()</code> είναι να παίρνει το χαρακτηριστικό <code>__doc__</code> της συνάρτησης και να το εμφανίζει με ωραίο τρόπο. Mπορείτε να το δοκιμάσετε στην παραπάνω συνάρτηση αρκεί να συμπεριλάβετε την εντολή <code>help(printMax)</code> στο πρόγραμμά σας. Θυμηθείτε να πατήσετε το <code>q</code> για κλείσετε τη <code>help</code>.</p>
+<p>Μερικά αυτοματοποιημένα εργαλεία μπορούν να ανακτήσουν την τεκμηρίωση από το πρόγραμμά σας με αυτόν τον τρόπο. Συνεπώς συνιστάται να χρησιμοποιείτε συμβολοσειρές τεκμηρίωσης σε κάθε μη τετριμμενη συνάρτηση που γράφετε. Η εντολή <code>pydoc</code> που συνοδεύει την Python λειτουργεί παρόμοια με τη <code>help()</code> χρησιμοποιώντας τα docstrings.</p>
+<h2>Σχολιασμοί (Annotations)</h2>
+<p>Οι συναρτήσεις έχουν ακόμα ένα προχωρημένο χαρακτηριστικό με το όνομα «σχολιασμοί», το οποίο είναι ένας γρήγορος τρόπος να επισυνάψουμε επιπρόσθετες πληροφορίες για κάθε μια από τις παραμέτρους καθώς και την τιμή επιστροφής. Η Python δεν διερμηνεύει απο μόνη της αυτές τις πληροφορίες με οποιοδήποτε τρόπο (αυτή η λειτουργία έχει αφεθεί στις βιβλιοθήκες τρίτων να τα διερμηνεύουν με όποιο τρόπο θέλουν), γι' αυτό θα παραλείψουμε αυτό το χαρακτηριστικό από τη συζήτησή μας. Αν παρόλα αυτά ενδιαφέρεστε να μάθετε για τους σχολιασμούς, μπορείτε να δείτε τις σχετικές αναφορές στο <a href="http://www.python.org/dev/peps/pep-3107/">Python Enhancement Proposal No. 3107</a>.</p>
+<h2>Σύνοψη</h2>
+<p>Έχουμε ήδη δει πολλα χαρακτηριστικά των συναρτήσεων αλλα δεν έχουμε καλύψει όλες τις πλευρές τους. Πάντως έχουμε ήδη καλύψει τα περισσότερα από αυτά που θα χρησιμοποιήσουμε με την Python σε καθημερινή βάση. Στο επόμενο κεφάλαιο θα δούμε πως δημιουργούμε και χρησιμοποιούμε αρθρώματα (modules) στην Python.</p>
+        </div>
+        
+        <footer>
+            <div class="centered">
+                <p>Το παρόν ηλεκτρονικό βιβλίο είναι διαθέσιμο υπό την άδεια <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">Creative Commons BY-NC-SA 3.0</a> &amp; αποτελεί μετάφραση του <a href="http://www.swaroopch.com/notes/Python" target="_blank">A Byte Of Python</a>.</p>
+                <p>Η ελληνική έκδοση του βιβλίου μεταφράστηκε από τα μέλη του forum <a href="https://github.com/ubuntu-gr">ubuntu-gr</a>.</p>
+                <p>Σχεδιασμός ιστοσελίδας: <a href="mailto:cyberpython@gmail.com">Γεώργιος Μίγδος</a></p>
+            </div>
+        </footer>
+    </body>
+</html>

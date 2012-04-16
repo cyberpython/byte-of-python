@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8" />
+        <link href="stylesheets/style.css" rel="stylesheet" type="text/css" />
+        <title>Byte of Python - Ελληνική Έκδοση</title>
+    </head>
+    
+    <body>
+        <header>
+            <div class="centered">
+                <h1><a href="index.html">Byte of Python - Ελληνική Έκδοση</a></h1>
+            </div>
+        </header>
+        
+        <div class="content">
+            <h1>Είσοδος / έξοδος</h1>
+<h2>Εισαγωγή</h2>
+<p>Θα υπάρξουν καταστάσεις όπου το πρόγραμμά σας πρέπει να αλληλεπιδράσει με το χρήστη. Για παράδειγμα, θα θέλετε να πάρετε είσοδο από το χρήστη και μετά να τυπώσετε πίσω μερικά αποτελέσματα. Μπορούμε να το επιτύχουμε αυτό χρησιμοποιώντας αντίστοιχα τις συναρτήσεις <code>input()</code> και <code>print()</code>.</p>
+<p>Για έξοδο μπορούμε να χρησιμοποιήσουμε τις διάφορες μεθόδους της κλάσης <code>str</code> (string). Για παράδειγμα, μπορείτε να χρησιμοποιήσετε τη μέθοδο <code>rjust</code> για να πάρετε μια συμβολοσειρά, η οποία είναι δεξιά στοιχισμένη (right justified) σε ένα καθορισμένο εύρος. Κοιτάξτε τη <code>help(str)</code> για περισσότερες λεπτομέρειες.</p>
+<p>Ένας ακόμα συνηθισμένος τύπος εισόδου/εξόδου είναι ο χειρισμός των αρχείων (files). Η ικανότητα να δημιουργείτε, διαβάζετε και να γράφετε αρχεία είναι βασική σε πολλά προγράμματα και θα εξερευνήσουμε αυτή την πτυχή σε αυτό το κεφάλαιο.</p>
+<h2>Είσοδος από το χρήστη</h2>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/python</span>
+<span class="c"># user_input.py</span>
+
+<span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">text</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">is_palindrome</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">text</span> <span class="o">==</span> <span class="n">reverse</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<span class="n">something</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">&#39;Enter text: &#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">is_palindrome</span><span class="p">(</span><span class="n">something</span><span class="p">)):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Yes, it is a palindrome&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;No, it is not a palindrome&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Έξοδος:</p>
+<div class="codehilite"><pre>$ python user_input.py
+Enter text: sir
+No, it is not a palindrome
+
+$ python user_input.py
+Enter text: madam
+Yes, it is a palindrome
+
+$ python user_input.py
+Enter text: racecar
+Yes, it is a palindrome
+</pre></div>
+
+
+<p>Πώς δουλεύει:</p>
+<p>Χρησιμοποιούμε τον τεμαχισμό (κομμάτιασμα) για να αναστρέψουμε το κείμενο. Έχουμε ήδη δει πώς μπορούμε να κάνουμε <a href="data_structures.html#sequences">κομμάτια από ακολουθίες</a>, χρησιμοποιώντας τον κώδικα <code>seq[a:b]</code>, αρχίζοντας από τη θέση <code>a</code> μέχρι τη θέση <code>b</code>. Μπορούμε επίσης να δώσουμε ένα τρίτο όρισμα το οποίο προσδιορίζει το βήμα με το οποίο γίνεται το κομμάτιασμα. Το προκαθορισμένο βήμα είναι το 1 εξαιτίας του οποίου επιστρέφει ένα συνεχές τμήμα του κειμένου. Δίνοντας ένα αρνητικό βήμα δηλ. -1, θα επιστρέψει το κείμενο ανάστροφα.</p>
+<p>Η συνάρτηση <code>input()</code> παίρνει μια συμβολοσειρά σαν όρισμα και το παρουσιάζει στον χρήστη.Τότε περιμένει το χρήστη να τυπώσει κάτι και να πιέσει το <code>return</code>. Άπαξ και ο χρήστης έχει εισάγει κάτι, η συνάρτηση <code>input()</code> τότε θα επιστρέψει αυτό το κείμενο.</p>
+<p>Παίρνουμε αυτό το κείμενο και το αναστρέφουμε. Εάν το αυθεντικό κείμενο και το ανεστραμμένο είναι ίσα, τότε το κείμενο είναι ένα παλίνδρομο.</p>
+<p>Εργασία για το σπίτι:</p>
+<p>Ο έλεγχος εάν ένα κείμενο είναι παλίνδρομο θα έπρεπε επίσης να αγνοεί τη στίξη, τα διαστήματα και τα κεφαλαία. Για παράδειγμα, το κείμενο <code>"Rise to vote, sir"</code> είναι παλίνδρομο, αλλά το τρέχον πρόγραμμά μας δεν το λέει. Μπορείτε να αναπτύξετε το ανωτέρο πρόγραμμα για να το αναγνωρίσει σαν παλίνδρομο;</p>
+<h2>Αρχεία</h2>
+<p>Μπορείτε να ανοίξετε και να χρησιμοποιήσετε αρχεία για διάβασμα ή γράψιμο, δημιουργώντας ένα αντικείμενο της κλάσης <code>file</code> και χρησιμοποιώντας τις μεθόδους της, <code>read</code>, <code>readline</code> ή <code>write</code> κατάλληλα για να διαβάσει από ή να γράψει στο αρχείο. Η ικανότητα να διαβάζει ή να γράφει στο αρχείο εξαρτάται από τον τρόπο (<em>mode</em>) που έχετε καθορίσει για το άνοιγμα του αρχείου. Τότε τελικά, όταν τελειώσετε με το αρχείο, καλείτε τη μέθοδο <code>close</code>, να πει στην Python ότι τελειώσαμε με τη χρήση του αρχείου.</p>
+<p>Παράδειγμα:</p>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/python</span>
+<span class="c"># Filename: using_file.py</span>
+
+<span class="n">poem</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;</span><span class="se">\</span>
+<span class="s">Programming is fun</span>
+<span class="s">When the work is done</span>
+<span class="s">if you wanna make your work also fun:</span>
+<span class="s">    use Python!</span>
+<span class="s">&#39;&#39;&#39;</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;poem.txt&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="c"># open for &#39;w&#39;riting</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">poem</span><span class="p">)</span> <span class="c"># write text to file</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c"># close the file</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;poem.txt&#39;</span><span class="p">)</span> <span class="c"># if no mode is specified, &#39;r&#39;ead mode is assumed by default</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c"># Zero length indicates EOF</span>
+        <span class="k">break</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c"># close the file</span>
+</pre></div>
+
+
+<p>Έξοδος:</p>
+<p>Αρχικά ανοίγετε ένα αρχείο χρησιμοποιώντας την ενσωματωμένη συνάρτηση <code>open</code> καθορίζοντας την ονομασία του αρχείου και τον τρόπο με τον οποίο θέλουμε να ανοίγει το αρχείο. Ο τρόπος μπορεί να είναι με διάβασμα (<code>'r'</code>, <em>read mode</em>), με γράψιμο (<code>'w'</code>, <em>write mode</em>) ή με πρόσθεση (<code>'a'</code>, <em>append mode</em>). Μπορούμε επίσης να χειριστούμε ένα αρχείο κειμένου (<code>'t'</code>, <em>text file</em>) ή ένα δυαδικό αρχείο (<code>'b'</code>, <em>binary file</em>). Στην πραγματικότητα υπάρχουν πάρα πολλοί τρόποι διαθέσιμοι και η <code>help(open)</code> θα σας δώσει περισσότερες λεπτομέρειες γι αυτούς. Από προεπιλογή η <code>open()</code> θεωρεί το αρχείο ως αρχείο κειμένου (<code>'t'</code>ext file) και το ανοίγει με τον τύπο <code>'r'</code>ead.</p>
+<p>Στο δικό μας παράδειγμα, αρχικά ανοίγουμε το αρχείο σε εγγραφή και χρησιμοποιούμε τη μέθοδο write του αντικειμένου του αρχείου, για να γράψουμε στο αρχείο και τότε τελικά κλείνουμε (<code>close</code>) το αρχείο.</p>
+<p>Κατόπιν ανοίγουμε το ίδιο αρχείο πάλι για ανάγνωση. Δε χρειάζεται να καθορίσουμε έναν τύπο, γιατί η «ανάγνωση» είναι ο προκαθορισμένος τρόπος. Διαβάζουμε κάθε γραμμή του αρχείου χρησιμοποιώντας τη μέθοδο <code>readline</code> σε βρόχο. Αυτή η μέθοδος επιστρέφει μια ολοκληρωμένη γραμμή περιλαμβάνοντας το χαρακτήρα νέας γραμμής (newline character) στο τέλος της γραμμής. Όταν μια <em>άδεια</em> συμβολοσειρά επιστρέφεται, σημαίνει ότι έχουμε φθάσει στο τέλος του αρχείου και «ξεφεύγουμε» (<code>break</code>) από το βρόχο.</p>
+<p>Από προεπιλογή η συνάρτηση <code>print()</code> τυπώνει το κείμενο καθώς και μια αυτόματη νέα γραμμή (newline) στην οθόνη. Καταστέλλουμε τη νέα γραμμή καθορίζοντας <code>end=''</code>, διότι η γραμμή που διαβάζεται από το αρχείο ήδη τελειώνει με ένα χαρακτήρα νέας γραμμής. Τότε, τελικά κλείνουμε (<code>close</code>) το αρχείο.</p>
+<p>Τώρα, ελέγξτε τα περιεχόμενα του αρχείου <code>poem.txt</code>, για να επιβεβαιώσετε ότι το πρόγραμμα έχει πραγματικά γραφτεί και διαβαστεί από αυτό το αρχείο.</p>
+<h2>Pickle</h2>
+<p>Η Python παρέχει ένα πρότυπο άρθρωμα που ονομάζεται <code>pickle</code> και χρησιμοποιώντας το μπορείτε να αποθηκεύετε <strong>οποιοδήποτε</strong> αντικείμενο της Python σε ένα αρχείο και αργότερα να το παίρνετε πίσω. Αυτό ονομάζεται <em>επίμονη</em> αποθήκευση του αντικειμένου (persistence).</p>
+<p>Παράδειγμα:</p>
+<div class="codehilite"><pre><span class="c">#!/usr/bin/python</span>
+<span class="c"># Filename: pickling.py</span>
+
+<span class="kn">import</span> <span class="nn">pickle</span>
+
+<span class="c"># the name of the file where we will store the object</span>
+<span class="n">shoplistfile</span> <span class="o">=</span> <span class="s">&#39;shoplist.data&#39;</span>
+<span class="c"># the list of things to buy </span>
+<span class="n">shoplist</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;apple&#39;</span><span class="p">,</span> <span class="s">&#39;mango&#39;</span><span class="p">,</span> <span class="s">&#39;carrot&#39;</span><span class="p">]</span>
+
+<span class="c"># Write to the file</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">shoplistfile</span><span class="p">,</span> <span class="s">&#39;wb&#39;</span><span class="p">)</span>
+<span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">shoplist</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="c"># dump the object to a file</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">del</span> <span class="n">shoplist</span> <span class="c"># destroy the shoplist variable</span>
+
+<span class="c"># Read back from the storage</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">shoplistfile</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span>
+<span class="n">storedlist</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="c"># load the object from the file</span>
+<span class="k">print</span><span class="p">(</span><span class="n">storedlist</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Έξοδος:</p>
+<div class="codehilite"><pre>$ python pickling.py
+[&#39;apple&#39;, &#39;mango&#39;, &#39;carrot&#39;]
+</pre></div>
+
+
+<p>Πώς δουλεύει:</p>
+<p>Για να αποθηκεύσουμε ένα αντικείμενο σε ένα αρχείο, πρέπει αρχικά να ανοίξουμε (<code>open</code>) το αρχείο με τρόπο <code>'w'</code>rite <code>'b'</code>inary και μετά να καλέσουμε τη συνάρτηση <code>dump</code> του αρθρώματος pickle. Αυτή η διαδικασία ονομάζεται <em>pickling</em>.</p>
+<p>Κατόπιν, ανακτούμε το αντικείμενο χρησιμοποιώντας τη συνάρτηση <code>load</code> του αρθρώματος pickle, η οποία επιστρέφει το αντικείμενο. Αυτή η διαδικασία ονομάζεται <em>unpickling</em>.</p>
+<h2>Σύνοψη</h2>
+<p>Έχουμε συζητήσει διάφορους τύπους εισόδου/εξόδου, καθώς επίσης διαχείριση αρχείου και χρήση του αρθρώματος <code>pickle</code>.</p>
+<p>Στη συνέχεια θα εξερευνήσουμε την έννοια των εξαιρέσεων (exceptions).</p>
+        </div>
+        
+        <footer>
+            <div class="centered">
+                <p>Το παρόν ηλεκτρονικό βιβλίο είναι διαθέσιμο υπό την άδεια <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">Creative Commons BY-NC-SA 3.0</a> &amp; αποτελεί μετάφραση του <a href="http://www.swaroopch.com/notes/Python" target="_blank">A Byte Of Python</a>.</p>
+                <p>Η ελληνική έκδοση του βιβλίου μεταφράστηκε από τα μέλη του forum <a href="https://github.com/ubuntu-gr">ubuntu-gr</a>.</p>
+                <p>Σχεδιασμός ιστοσελίδας: <a href="mailto:cyberpython@gmail.com">Γεώργιος Μίγδος</a></p>
+            </div>
+        </footer>
+    </body>
+</html>
